@@ -1,6 +1,4 @@
 # Using Drupal
-This repository holds the source code that goes with the [Using Drupal book](http://shop.oreilly.com/product/0636920010890.do) by O'Reilly. There are currently two editions of the book; one for Drupal 7 and one for Drupal 6. The source code for each book is in its own branch.
+This branch contains the Drupal 7 source code that goes with [Using Drupal book](http://shop.oreilly.com/product/0636920010890.do), 2nd Edition. 
 
-Each branch contains a copy of Drupal core and all of the contributed modules and themes you'll need to work through the hands-on excercises, as well as additional "asset" files such as logos and product images, that are referenced in some of the chapters. The versions included are the exact versions used in the book so that the examples in the book continue to work throughout the ages. We recommend that you go through the book chapters using the exact source code provided, so that your first learning experience is the same as in the book.
-
-That said, the Drupal community moves quickly, especially when in comes to improving our favorite tools. Critical security updates and important bug fixes have happened after Using Drupal was published, so you should **make sure to upgrade Drupal and all modules in this download before putting the code into use on a production site**. You can find some guidance on how to do this in Appendix A of the book.
+For more information on how to use this source code, see http://usingdrupal.com/source.
