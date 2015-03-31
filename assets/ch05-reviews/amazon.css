@@ -1,0 +1,23 @@
+div.group_summary {
+  border: 1px solid lightgrey;
+  float: right;
+  padding: 10px;
+  width: 250px;
+  font-size: .9em;
+}
+
+div.group_summary div.field-label {
+  font-weight: bold;
+}
+
+div.field-type-asin {
+  clear: none;
+  width: 400px;
+  margin-bottom: 10px;
+  border: none;
+}
+
+div.field-type-asin img {
+  float: left;
+  padding-right: 10px;
+}

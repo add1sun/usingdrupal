@@ -1,0 +1,14 @@
+diff --git a/css/style.css b/css/style.css
+index 032a3c5..2c7f4cc 100644
+--- a/css/style.css
++++ b/css/style.css
+@@ -659,9 +659,6 @@ tr.odd {
+   border-width: 0px;
+ }
+ 
+-.field-label-inline .field-label {
+-  width: 64px;
+-}
+ blockquote {
+   padding: 0px 10px;
+   border-left-style: solid;
