@@ -57,16 +57,20 @@ body {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 115%;
 }
-h1, h2, h3, h4, h5, h6 {
+h1 {
+    margin: 30px 0 0 10px;
+}
+h1 a {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 200%;
+    text-decoration: none;
+}
+h2, h3, h4, h5, h6 {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
 	text-transform: uppercase;
 	margin: 0;
 	padding: 0;
-}
-h1 {
-	text-decoration: none;
-	margin: 30px 0 0 10px;
 }
 a {
 	color: #598F93;
@@ -104,6 +108,9 @@ hr {
 }
 .main-nav a:hover {
 	color: #598f93;
+}
+.main-nav a.active {
+    color: #000;
 }
 .center {
 	text-align: center;
