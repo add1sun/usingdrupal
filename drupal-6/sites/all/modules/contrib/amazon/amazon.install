@@ -1,0 +1,101 @@
+<?php
+// $Id: amazon.install,v 1.5.2.1 2008/06/26 04:21:40 eaton Exp $
+
+function amazon_install() {
+  drupal_install_schema('amazon');
+}
+
+function amazon_schema() {
+  $schema['amazon_item'] = array(
+    'fields' => array(
+      'asin' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'title' => array('type' => 'varchar', 'length' => 255, 'not null' => TRUE),
+      'detailpageurl' => array('type' => 'varchar', 'length' => 255, 'not null' => TRUE),
+      'salesrank' => array('type' => 'int', 'unsigned' => TRUE),
+      'brand' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'publisher' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'manufacturer' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'mpn' => array('type' => 'varchar', 'length' => 128),
+      'studio' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'label' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'binding' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'releasedate' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'listpriceamount' => array('type' => 'float', 'unsigned' => TRUE),
+      'listpricecurrencycode' => array('type' => 'varchar', 'length' => 32),
+      'listpriceformattedprice' => array('type' => 'varchar', 'length' => 32),
+      'productgroup' => array('type' => 'varchar', 'length' => 255, 'not null' => TRUE),
+      'producttypename' => array('type' => 'varchar', 'length' => 255, 'not null' => TRUE),
+      'timestamp' => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0),
+    ),
+    'primary key' => array('asin'),
+  );
+
+  $schema['amazon_item_participant'] = array(
+    'fields' => array(
+      'asin' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'type' => array('type' => 'varchar', 'length' => 128, 'not null' => TRUE),
+      'participant' => array('type' => 'varchar', 'length' => 128, 'not null' => TRUE),
+    ),
+    'indexes' => array(
+      'asin' => array('asin'),
+    ),
+  );
+
+  $schema['amazon_item_image'] = array(
+    'fields' => array(
+      'asin' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'size' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'url' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'height' => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+      'width' => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+    ),
+    'primary key' => array('asin, size'),
+    'indexes' => array(
+      'asin' => array('asin'),
+    ),
+  );
+
+  $schema['amazon_item_editorial_review'] = array(
+    'fields' => array(
+      'asin' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'source' => array('type' => 'varchar', 'length' => 255, 'not null' => TRUE),
+      'content' => array('type' => 'text'),
+    ),
+    'primary key' => array('asin', 'source'),
+  );
+
+
+  $schema['amazon_item_node'] = array(
+    'fields' => array(
+      'nid' => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+      'vid' => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+      'asin' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE),
+      'notes' => array('type' => 'text','not null' => FALSE),
+      'module' => array('type' => 'varchar', 'length' => 64, 'not null' => TRUE, 'default' => 'amazon'),
+      'delta' => array('type' => 'int', 'default' => 0),
+    ),
+    'primary key' => array('vid, asin, module'),
+    'indexes' => array(
+      'nid' => array('nid'),
+      'vid' => array('vid'),
+      'vid_module' => array('vid', 'module'),
+      'asin' => array('asin'),
+    ),
+  );
+
+  return $schema;
+}
+
+function amazon_update_6001() {
+  $ret = array();
+  db_add_column($ret, 'amazon_item', 'mpn', 'varchar(128)');
+  return $ret;
+}
+
+function amazon_uninstall() {
+  db_query("DROP TABLE {amazon_item}");
+  db_query("DROP TABLE {amazon_item_participant}");
+  db_query("DROP TABLE {amazon_item_image}");
+  db_query("DROP TABLE {amazon_item_editorial_review}");
+  db_query("DROP TABLE {amazon_item_node}");
+}

@@ -1,0 +1,159 @@
+<?php
+// $Id: uc_roles.install,v 1.2.2.7 2008/10/24 21:06:47 islandusurper Exp $
+
+/**
+ * @file
+ * uc_roles module install file.
+ */
+
+/**
+ * Define the table structures.
+ *
+ * @return
+ *   The schema which contains the structure for the uc_roles module's tables.
+ */
+function uc_roles_schema() {
+  $schema['uc_roles_products'] = array(
+    'fields' => array(
+      'pfid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'nid' => array(
+        'description' => t('The unique identifier of a node.'),
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'model' => array(
+        'description' => t('The product identifier.'),
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => NULL,
+      ),
+      'rid' => array(
+        'description' => t('The role id.'),
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'duration' => array(
+        'description' => t('How long this role is valid for.'),
+        'type' => 'int',
+        'size' => 'small',
+      ),
+      'granularity' => array(
+        'type' => 'varchar',
+        'length' => 32,
+      ),
+      'shippable' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'by_quantity' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'nid' => array('nid'),
+      'model' => array('model'),
+      'rid' => array('rid'),
+    ),
+    'primary key' => array('pfid'),
+  );
+
+  $schema['uc_roles_expirations'] = array(
+    'fields' => array(
+      'uid' => array(
+        'description' => t('The user id.'),
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'rid' => array(
+        'description' => t('The role id.'),
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'expiration' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'notified' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+      ),
+    ),
+    'indexes' => array(
+      'uid' => array('uid'),
+      'rid' => array('rid'),
+    ),
+  );
+
+  return $schema;
+}
+
+
+/**
+ * Implementation of hook_install().
+ *
+ * Inserts the uc_roles module's schema in the SQL database.
+ */
+function uc_roles_install() {
+  drupal_install_schema('uc_roles');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ *
+ * Remove the variables and schema corresponding to the uc_roles module.
+ */
+function uc_roles_uninstall() {
+  drupal_uninstall_schema('uc_roles');
+
+  db_query("DELETE FROM {variable} WHERE name LIKE 'uc_roles_%%'");
+}
+
+function uc_roles_update_6000() {
+  $ret = array();
+
+  db_drop_index($ret, 'uc_roles_products', 'pfid');
+  db_drop_index($ret, 'uc_roles_products', 'nid');
+  db_drop_index($ret, 'uc_roles_products', 'rid');
+  db_change_field($ret, 'uc_roles_products', 'pfid', 'pfid', array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0), array('indexes' => array('pfid' => array('pfid'))));
+  db_change_field($ret, 'uc_roles_products', 'nid', 'nid', array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0), array('indexes' => array('nid' => array('nid'))));
+  db_change_field($ret, 'uc_roles_products', 'rid', 'rid', array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0), array('indexes' => array('rid' => array('rid'))));
+
+  db_drop_index($ret, 'uc_roles_expirations', 'uid');
+  db_drop_index($ret, 'uc_roles_expirations', 'rid');
+  db_change_field($ret, 'uc_roles_expirations', 'uid', 'uid', array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0), array('indexes' => array('uid' => array('uid'))));
+  db_change_field($ret, 'uc_roles_expirations', 'rid', 'rid', array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0), array('indexes' => array('rid' => array('rid'))));
+
+  return $ret;
+}
+
+function uc_roles_update_6001() {
+  $ret = array();
+
+  db_drop_index($ret, 'uc_roles_products', 'pfid');
+  db_add_primary_key($ret, 'uc_roles_products', array('pfid'));
+
+  db_drop_index($ret, 'uc_roles_products', 'uc_roles_products_model');
+  db_add_index($ret, 'uc_roles_products', 'model', array('model'));
+
+  return $ret;
+}

@@ -1,0 +1,459 @@
+/* $Id: style.css,v 1.1.2.3 2007/10/18 14:27:40 dvessel Exp $ */
+/* @override http://dvessel.local/projects/drupal/sites/all/themes/skyliner/styles/style.css */
+   
+body {
+  background-color: #eee;
+  background-image: url(../images/grid_pattern.gif);
+  color: #000;
+}
+
+/* A container should group all your columns. */
+#page {
+  position: relative;
+  width: 800px;
+  margin: 0 auto;
+  border: 1px solid #666;
+  background: #fff url(../images/sky-bg1.jpg) no-repeat;
+}
+a {
+  text-decoration: none;
+}
+table {
+  width: 100%;
+}
+tr.odd, tr.even {
+  background: none;
+}
+tr.even:hover td, tr.odd:hover td {
+  background: url(../images/falloff-b.png) 0 25%;
+}
+td, table th {
+  border-bottom-color: #666 !important;
+}
+td.active {
+  background: transparent url(../images/falloff-b.png) 0 50%;
+}
+th img {
+  margin-left: .4em;
+}
+thead div.sticky-header {
+  border-bottom: 2px solid #ccc;
+}
+.form-item .description {
+  padding-left: 10px;
+  line-height: 1.2em;
+}
+.form-item:hover .description {
+  background: url(../images/ar1r.gif) no-repeat left center;
+}
+fieldset {
+  border-color: #666;
+}
+fieldset:hover {
+  border-color: #c36660;
+}
+li {
+  list-style-type: square !important;
+}
+a.external {
+  background: url(../images/link-outa.gif) no-repeat right center;
+  padding-right: 9px;
+}
+a.external:hover {
+  background-image: url(../images/link-outb.gif);
+}
+.first-c {
+  color: #d62f00;
+  text-shadow: #999 1px 1px 1px;
+  font-size: 3em;
+  vertical-align: -.1em;
+  line-height: 0;
+  font-family: Georgia, serif;
+  text-transform: lowercase;
+}
+* html .first-c {
+  vertical-align: -.2em;
+  line-height: .9em;
+}
+/* individual first letters for kerning */
+.fc-k, .fc-r, .fc-v, .fc-y {
+  letter-spacing: -.2ex;
+}
+.fc-f, .fc-g, .fc-t, .fc-u, .fc-w, .fc-x {
+  letter-spacing: -.1ex;
+}
+.fc-a, .fc-d, .fc-h, .fc-i, .fc-j, .fc-l, .fc-m, .fc-n, .fc-q {
+  letter-spacing: -.05ex;
+}
+.fc-e {
+  letter-spacing: .05ex;
+}
+#search-box {
+  padding-top: 2px;
+}
+.sbox-l, .sbox-r  {
+  background: url(../images/srch.png) no-repeat 0 -19px;
+  float: left;
+  width: 19px;
+  height: 19px;
+}
+.sbox-r  {
+  background-position: right -19px;
+}
+.can-clear  {
+  background-position: right -38px;
+}
+.sbox {
+  background: url(../images/srch.png) repeat-x 0 0;
+  float: left;
+  height: 19px;
+  overflow: hidden;
+}
+.sbox input.place-holder {
+  color: gray;
+}
+.sbox input {
+  background: transparent;
+  border: 0;
+  height: 13px;
+  padding: 3px;
+  outline: none;
+  font-size: 11px;
+}
+html.js #search-theme-form label, html.js #search-theme-form #edit-submit {
+  display: none;
+}
+.more-help-link {
+  letter-spacing: .1em;
+  font-size: .9em;
+}
+.messages {
+  padding: .2em 1em;
+  margin-bottom: .5em;
+  background: url(../images/bgl.png) 0 bottom;
+}
+.status {
+  color: #1d6c31;
+}
+div.error {
+  background-image: url(../images/bgr.png);
+  background-color: transparent;
+}
+div.error a {
+  background-color: #fff;
+}
+/*
+** Tab navigation
+*/
+ul.primary, ul.secondary {
+  border-collapse: collapse;
+  padding: 0 0 0 1em;
+  list-style: none;
+  margin: 5px;
+  line-height: normal;
+  border-bottom: 1px solid #333;
+}
+/* IE 6 hack */
+* html ul.primary, * html ul.secondary {
+  zoom: 1;
+}
+ul.secondary {
+  padding: 0 0 0.5em 0;
+}
+ul.primary li, ul.secondary li {
+  display: inline-block;
+}
+/* IE 6 hack */
+* html ul.primary li, * html ul.secondary li {
+ display: inline;
+}
+ul.secondary li {
+  padding: 0 .1em .2em;
+  border-style: none;
+}
+ul.primary li a, ul.secondary a {
+  margin: 0 .5em .2em 0;
+  padding: 0 1em;
+  color: #000;
+  border-style: none;
+  background: transparent url(../images/falloff-b.png) 0 70%;
+}
+ul.secondary a {
+  margin-right: .2em;
+  padding: 0 .5em;
+  background-position: 0 50%;
+}
+ul.primary li a:hover, ul.secondary a:hover {
+  border-style: none;
+  background: transparent url(../images/falloff-b.png) 0 bottom;
+  color: #ccc;
+}
+ul.secondary a:hover {
+  background-position: 0 80%;
+}
+ul.primary li.active a, ul.secondary a.active {
+  background: transparent url(../images/bgr.png) 0 bottom;
+  border-style: none;
+  outline: none;
+}
+.new {
+  color: #f00;
+}
+.node {
+  margin-bottom: 2em;
+  padding: 1em;
+}
+.node h2 {
+  line-height: 1em;
+}
+.meta, .comment .submitted, .feed-item-meta{
+  font-style: italic;
+  margin-bottom: .8em;
+}
+.node p {
+  margin: .2em 0 1.2em;
+}
+.node ul.links, .comment ul.links {
+  display: block;
+  text-align: right !important;
+}
+.node ul.links .node_read_more {
+  text-transform: uppercase;
+}
+.node .meta ul.inline {
+  display: inline;
+}
+.comment {
+  padding: 1em;
+}
+.comment:hover {
+  outline: 1px solid #eee;
+}
+.comment-new {
+  border-left: 2px solid #f97107;
+}
+#comments .indented {
+  border-left: 3px solid #ddd;
+  margin-left: 0;
+}
+#comments .indented:hover {
+  outline: 1px solid #eee;
+}
+.feed-item-body * {
+  overflow: auto;
+}
+.feed-item {
+  padding: 1em 0;
+}
+#header {
+  padding: 7px 16px 0;
+  color: #fff;
+  height: 36px;
+}
+#logo-title {
+  float: left;
+  color: #fff;
+}
+#name-and-slogan {
+  float: left;
+  margin-left: .4em
+}
+#logo {
+  float: left;
+  display: none;
+}
+#logo img {
+  margin-bottom: 0;
+}
+#site-name {
+  text-shadow: #555 -2px 1px 4px;
+  font: normal normal 1.8em Helvetica, "Helvetica Neue", Arial, Verdana, sans-serif;
+}
+#site-name a {
+  color: #fff;
+}
+#search-box {
+  float: right;
+}
+#search-box label, #search-box #edit-submit {
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: .1em;
+}
+#container {
+  width: 100%;
+  clear: both;
+}
+#main {
+  width: 90%;
+  min-height: 500px;
+  padding: 10px 5%;
+  position: relative;
+  z-index: 1;
+}
+/* IE 6 hack */
+* html #main {
+  width: 88%;
+  height: 500px; 
+}
+#breadcrumb {
+  margin-left: -4%;
+}
+#breadcrumb a {
+  padding: 0 .5em;
+  color: #333;
+  font-style: italic;
+}
+#breadcrumb a:hover {
+  background: url(../images/bgl.png) 0 bottom;
+  outline: 1px solid #666;
+}
+#navigation {
+  padding: 0 5px 0 6%;
+  letter-spacing: .1em;
+  position: relative;
+  z-index: 2;
+}
+#primary {
+  font-size: 1.2em;
+}
+#navigation li {
+  border-left: 1px solid #666;
+  padding: 0;
+  padding-left: .4em;
+}
+#navigation li.first {
+  border-left: none;
+}
+#navigation a {
+  padding-right: .4em;
+  padding-left: .4em;
+  color: #000;
+}
+#navigation a:hover {
+  background: url(../images/bgl.png) 0 bottom;
+  outline: 1px solid #666;
+}
+li a.active {
+  background-image: url(../images/bgr.png);
+}
+.pager {
+  float: right;
+}
+.pager li {
+  margin-left: -1px !important;
+  padding: 0 !important;
+  border: 1px solid #666;
+  display: inline-block !important;
+}
+.pager li.first {
+  margin-left: 0 !important;
+}
+li.pager-current {
+  background-image: url(../images/bgr.png) !important;
+  padding: 0 .5em !important;
+}
+li.pager-ellipsis {
+  background-image: url(../images/bgll.png) !important;
+  padding: 0 .3em !important;
+}
+.pager li a {
+  background: none;
+  outline: none;
+  display: inline-block;
+  padding: 0 .5em !important;
+  background: url(../images/bgll.png) !important;
+}
+.pager li a:hover {
+  background: url(../images/bgl.png) !important;
+}
+/* IE 6 hack */
+* html .pager li, * html .pager a {
+ display: inline !important;
+}
+#mission {
+  width: 43%;
+  float: right;
+  border-left: 1px solid #62676d;
+  padding-left: 13px;
+  margin-left: 13px;
+  margin-right: -17px;
+  margin-top: 2em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  letter-spacing: .2ex;
+  color: #374653;
+}
+/* IE 6 hack. Layout changed completely. Can't be helped. */
+* html #mission {
+  width: 98%;
+  float: none;
+  margin: 0 auto;
+  padding: .5em 1em;
+  border: 1px solid #4b5d6e;
+}
+#sidebar-right {
+  position: absolute;
+  top: 39px;
+  left: 601px;
+  width: 200px;
+  z-index: 5;
+}
+#sidebar-right .block h2 {
+  font: 1em Helvetica, "Helvetica Neue", Arial, Verdana, sans-serif;
+  float: right;
+  clear: both;
+  text-align: right;
+  min-width: 8em;
+}
+* html #sidebar-right .block h2 {
+  width: 8em;
+}
+#sidebar-right h2 a {
+  display: block;
+  padding: .1em 1em;
+  color: #000;
+  background: url(../images/falloff-b.png) 0 50%;
+}
+#sidebar-right h2 a.active {
+  background-image: url(../images/bgr.png);
+}
+#sidebar-right h2 a:hover {
+  background-position: 0 bottom;
+  color: #ccc;
+}
+#sidebar-right .block {
+  position: relative;
+}
+#sidebar-right .content {
+  float: left;
+  width: 189px;
+  padding: 1em 5px;
+  margin-bottom: -1px;
+  line-height: 1em;
+  border: 1px solid #999;
+  border-right-style: none;
+  background: #eee url(../images/grid_pattern.gif);
+}
+#sidebar-right li a {
+  display: block;
+}
+/* IE 6 hack */
+* html #sidebar-right li a {
+  display: inline;
+}
+#sidebar-right .content a:hover {
+  outline: 1px solid #666;
+  background-color: #fff;
+}
+#footer-wrapper {
+  min-height: 44px;
+  background: url(../images/sky-bg2.jpg) no-repeat 0 bottom;
+  text-align: center;
+  margin-top: -200px;
+  padding-top: 320px;
+}
+/* IE 6 hack */
+* html #footer-wrapper {
+ height: 44px; 
+}

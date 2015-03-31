@@ -1,0 +1,9 @@
+<?php // $Id: box.tpl.php,v 1.2.2.1.2.1 2008/04/27 15:09:59 melon Exp $
+//
+// Ubiquity Drupal theme box.tpl.php file
+//
+?>  <div class="box">
+    <?php if ($title) { ?><h2 class="title"><?php print $title; ?></h2><?php } ?>
+    <div class="content"><?php print $content; ?></div>
+ </div>
+

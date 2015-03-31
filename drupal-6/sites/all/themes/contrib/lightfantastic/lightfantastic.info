@@ -1,0 +1,43 @@
+; $Id: lightfantastic.info,v 1.7 2008/06/01 04:13:46 brauerranch Exp $
+name = Light Fantastic
+description = A highly customizable theme for Drupal 6.
+version = VERSION
+core = 6.x
+engine = phptemplate
+
+; Define regions.
+regions[navigation_left] = Left navigation
+regions[navigation_right] = Right navigation
+regions[sidebar_left] = Left sidebar
+regions[sidebar_right] = Right sidebar
+regions[top] = Top
+regions[header] = Header
+regions[banner] = Banner
+regions[pre_content] = Before content
+regions[content] = Content
+regions[additional] = Additional
+regions[bottom] = Bottom
+
+; Add stylesheets.
+stylesheets[all][] = style.css
+stylesheets[print][] = assets/style/print.css
+
+
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = search
+features[] = favicon
+features[] = primary_links
+features[] = secondary_links
+; Mission is not currently implemented.
+; features[] = mission
+
+; Information added by drupal.org packaging script on 2008-07-29
+version = "6.x-1.0"
+core = "6.x"
+project = "lightfantastic"
+datestamp = "1217312714"
+

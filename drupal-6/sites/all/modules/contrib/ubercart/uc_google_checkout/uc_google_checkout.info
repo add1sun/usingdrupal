@@ -1,0 +1,14 @@
+; $Id: uc_google_checkout.info,v 1.1.2.8 2008/10/24 21:06:44 islandusurper Exp $
+name = Google Checkout
+description = Integrates Google's Checkout, Merchant Calculated Shipping, and Order Processing APIs.
+dependencies[] = uc_cart
+package = Ubercart - payment
+core = 6.x
+php = 5.0
+
+; Information added by drupal.org packaging script on 2008-11-04
+version = "6.x-2.x-dev"
+core = "6.x"
+project = "ubercart"
+datestamp = "1225757759"
+

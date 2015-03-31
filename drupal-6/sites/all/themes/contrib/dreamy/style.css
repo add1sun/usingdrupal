@@ -1,0 +1,590 @@
+/* $Id: style.css,v 1.8.2.3 2008/07/02 14:24:55 jswaby Exp $ */
+
+/*
+** HTML elements
+*/
+body {
+  background:url(images/bg-body.png) repeat-x top center #E8F7F9;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size:62.5%; /* Sets default font size to 10px */
+  color:#222222;
+}
+
+* {
+  margin:0;
+  padding:0;
+  }
+
+tr.odd td, tr.even td {
+  padding: 0.3em;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.5em;
+}
+h1 {
+  font-size: 1.3em;
+}
+h2 {
+  font-size: 1.2em;
+}
+h3, h4, h5, h6 {
+  font-size: 1.1em;
+}
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.9em;
+}
+a {
+  text-decoration: none;
+}
+a:link {
+  color: #39c;
+}
+a:visited {
+  color: #369;
+}
+a:hover {
+  color: #39c;
+}
+fieldset {
+  border: 1px solid #ccc;
+}
+pre {
+  background-color: #eee;
+  padding: 0.75em 1.5em;
+  font-size: 12px;
+  border: 1px solid #ddd;
+}
+table {
+  /* make <td> sizes relative to body size! */
+  font-size: 1em;
+}
+.form-item label {
+  font-size: 1em;
+  color: #222;
+}
+.item-list .title {
+  font-size: 1em;
+  color: #222;
+}
+.links {
+  margin-bottom: 0;
+}
+.comment .links {
+  margin-bottom: 0;
+}
+
+/*
+** Page layout blocks / IDs
+*/
+#wrapper {
+  margin:0 auto;
+  width:700px;
+  background:#ffffff;
+  font-size:1.20em;
+}
+
+#header, #content {
+  width: 100%;
+}
+#header {
+  height:139px;
+  background:url(images/bg-header.jpg) no-repeat;
+}
+#logo {
+  vertical-align: middle;
+  border: 0;
+}
+#logo img {
+  float: left;
+  padding: 0 1em;
+  border: 0;
+}
+
+
+/**
+ * Top (primary) menu system
+ */
+#menu {
+  padding: 0.5em 0.5em 0 0.5em;
+
+  height:35px;
+  line-height:35px;
+  background:url(images/bg-menu.png) repeat-x;
+  padding:0 10px;
+}
+#navlist {
+  list-style-type: none;
+}
+#navlist li {
+	float: left;
+}
+#navlist a {
+  font-weight: bold;
+  color: #fff;
+  display:block;
+  margin-right:2px;
+  padding:0pt 15px;
+}
+
+#navlist a:hover {
+  background:transparent url(images/bg-menu-hover.png) no-repeat scroll center;
+}
+
+
+
+
+
+#subnavlist {
+  padding: 0.5em 1.2em 0.4em 0;
+  font-size: 0.8em;
+  color: #9cf;
+}
+#subnavlist a {
+  font-weight: bold;
+  color: #9cf;
+}
+
+#search {
+  position: relative;
+  top: 28px;
+  left: 370px;
+  width: 180px;
+}
+#search .form-text{
+  background-color: #E8F7F9;
+}
+#search .form-submit {
+  background-color: #39c;
+}
+
+#search .form-text, #search .form-submit {
+  border: 1px solid #369;
+  font-size: 0.8em;
+  height: 1.5em;
+  vertical-align: middle;
+}
+#search .form-text {
+  width: 8em;
+  padding: 0 0.5em;
+}
+
+.form-text {
+  border: 1px solid #ccc;
+  height: 17px;
+}
+.form-submit {
+  border: 1px solid #ccc;
+  background-color: #E8F7F9;
+}
+
+#mission {
+  background-color: #CAF7F5;
+  padding: 1.5em 2em;
+  color: #000;
+  margin: 5px 0 0 5px;
+  text-align: justify;
+}
+#mission a, #mission a:visited {
+  color: #aaa;
+  font-weight: bold;
+}
+.site-name {
+  font-size:2.5em;
+  font-weight:normal;
+  cursor:default;
+  position:relative; top:50px; left:30px;
+  letter-spacing:1px;
+  color:#aaa;
+  font-style:italic;
+}
+.site-name a:link, .site-name a:visited {
+  color:#aaa;
+}
+.site-name a:hover {
+  color: #369;
+  text-decoration: none;
+}
+.site-slogan {
+  font-size: 1em;
+  color: #bbb;
+  display: block;
+  margin: 0;
+  font-style: italic;
+  font-weight: bold;
+  position:relative; top:28px; left:30px;
+}
+
+#content {
+  float:left;
+  min-height:400px;
+  width:500px;
+}
+
+#main {
+  /* padding in px not ex because IE messes up 100% width tables otherwise */
+  padding: 10px;
+}
+#mission, .node .content, .comment .content {
+  line-height: 1.4em;
+}
+#help {
+  font-size: 0.9em;
+  margin-bottom: 1em;
+}
+.breadcrumb {
+  margin-bottom: .5em;
+}
+.messages {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding: 0.3em;
+  margin-bottom: 1em;
+}
+
+#main ul, #main ol {
+  margin-left: 20px;
+}
+
+.error {
+  border-color: red;
+}
+
+#sidebar {
+  float:right;
+  margin-right:10px;
+  width:180px;
+}
+
+#sidebar-left, #sidebar-right {
+  background:#EFEFEF none repeat scroll 0%;
+	width:174px;
+  /* padding in px not ex because IE messes up 100% width tables otherwise */
+  padding: 0;
+  vertical-align: top;
+  margin: 0 0 5px 3px;
+}
+#sidebar-bottom {
+  height:20px;
+  background:url(images/bg-sidebar-bottom.gif) no-repeat top center #fff;
+}
+#sidebar-top {
+  height:20px;
+  background:url(images/bg-sidebar-top.gif) no-repeat top center #fff;
+}
+
+
+#sidebar ul li a {
+  border-bottom:1px solid #DDDDDD;
+  color:#222222;
+  display:block;
+  padding-left:5px;
+  height: 1%;
+}
+#sidebar li a:hover {
+  background:#edebed;
+  color:#6CC4D8;
+}
+
+#sidebar a {
+  color: #aaa;
+}
+
+#sidebar #sidebar-right a:hover, #sidebar #sidebar-left a:hover {
+  background:#EDEBED;
+  color:#6CC4D8;
+}
+
+#sidebar .block li{
+  padding: 0;
+}
+#sidebar .block ul {
+  padding: 0 0 0 1em;
+}
+
+#sidebar .block .title{
+  text-align: center;
+}
+
+/**
+ * Feed
+ */
+
+#feed {
+	height:25px;
+	width:148px;
+	background:url(images/bg-feed.gif) no-repeat #EFEFEF;
+	margin:0 auto;
+	padding-left:26px;
+	}
+a.feed-button {
+	display:block;
+    width:100px;
+    height:25px;
+    background:url(images/button-feed.png) 0 0 no-repeat;
+    text-decoration: none;
+	}
+
+a.feed-button:hover {
+	background-position:0 -25px;
+	}
+
+
+/* Footer */
+#footer {
+  padding: 1em;
+  font-size: 0.8em;
+  clear:both;
+  height: 81px;
+  background:url(images/bg-footer.jpg) no-repeat;
+}
+
+#footer-valid {
+	float:left;
+	padding-top:15px;
+	padding-left:20px;
+	cursor:default;
+	color:#ffffff;
+	clear: both;
+}
+#footer-valid a {
+	color:#ffffff;
+	text-decoration:none;
+	}
+#footer-valid a:hover {
+	color:#ffffff;
+	text-decoration:underline;
+	}
+
+/*
+** Common declarations for child classes of node, comment, block, box, etc.
+** If you want any of them styled differently for a specific parent, add
+** additional rules /with only the differing properties!/ to .parent .class.
+** See .comment .title for an example.
+*/
+.title, .title a {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #777;
+  margin: 0 auto;  /* decrease default margins for h<x>.title */
+}
+
+.node .title a, #main .title {
+  color:#B4C835;
+  font-weight:normal;
+  letter-spacing:-1px;
+}
+
+.node .title a:hover {
+  color:#6CC7DC;
+}
+
+.submitted {
+  color: #999;
+  font-size: 0.8em;
+}
+.links a {
+  color:#6CC7DC;
+}
+.links li.comment_comments, a.comment_add{
+  padding-left:20px;
+  padding-right:2px;
+  background:url(images/icon-comment.png) no-repeat 0px 2px;
+}
+.block, .box {
+  padding: 0 0 1.5em 0;
+}
+.block {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 0.75em;
+  margin-bottom: 1.5em;
+}
+.block .title {
+  margin-bottom: .25em;
+}
+.box .title {
+  font-size: 1.1em;
+}
+.node {
+  margin: .5em 0 2em 0;
+}
+.sticky {
+  padding: .5em;
+  background-color: #eee;
+  border: solid 1px #ddd;
+}
+.node .content, .comment .content {
+  margin: .5em 0 .5em 0;
+}
+.node .taxonomy {
+  color: #999;
+  font-size: 0.8em;
+  padding-left: 1.5em;
+}
+.node .picture {
+  border: 1px solid #ddd;
+  float: right;
+  margin: 0.5em;
+}
+.comment {
+  border: 1px solid #abc;
+  padding: .5em;
+  margin-bottom: 1em;
+}
+.comment .title a {
+  font-size: 1.1em;
+  font-weight: normal;
+}
+.comment .new {
+  text-align: right;
+  font-weight: bold;
+  font-size: 0.8em;
+  float: right;
+  color: red;
+}
+.comment .picture {
+  border: 1px solid #abc;
+  float: right;
+  margin: 0.5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+** Module specific styles
+*/
+#aggregator .feed-source {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin: 1em 0;
+}
+#aggregator .news-item .categories, #aggregator .source, #aggregator .age {
+  color: #999;
+  font-style: italic;
+  font-size: 0.9em;
+}
+#aggregator .title {
+  margin-bottom: 0.5em;
+  font-size: 1em;
+}
+#aggregator h3 {
+  margin-top: 1em;
+}
+#forum table {
+  width: 100%;
+}
+#forum td {
+  padding: 0.5em;
+}
+#forum td.forum, #forum td.posts {
+  background-color: #eee;
+}
+#forum td.topics, #forum td.last-reply {
+  background-color: #ddd;
+}
+#forum td.container {
+  background-color: #ccc;
+}
+#forum td.container a {
+  color: #555;
+}
+#forum td.statistics, #forum td.settings, #forum td.pager {
+  height: 1.5em;
+  border: 1px solid #bbb;
+}
+#forum td .name {
+  color: #96c;
+}
+#forum td .links {
+  padding-top: 0.7em;
+  font-size: 0.9em;
+}
+#profile .profile {
+  clear: both;
+  border: 1px solid #abc;
+  padding: .5em;
+  margin: 1em 0em;
+}
+#profile .profile .name {
+  padding-bottom: 0.5em;
+}
+.block-forum h3 {
+  margin-bottom: .5em;
+}
+div.admin-panel .description {
+  color: #999;
+}
+div.admin-panel .body {
+  background: #f4f4f4;
+}
+div.admin-panel h3 {
+  background:transparent url(images/bg-menu.png) repeat-x scroll 0%;
+  color: #fff;
+  padding: 5px 8px 5px;
+  margin: 0;
+}
+
+/**
+ * Style the bullets
+ */
+#sidebar li,
+#sidebar li.leaf,
+#sidebar li.expanded,
+#sidebar li.collapsed{
+  list-style-image: none;
+  list-style-type: none;
+}
+
+#sidebar .item-list ul li {
+  list-style-position:outside;
+  list-style-type: none;
+}
+
+#sidebar .item-list ul li {
+  margin: 0 0 0.25em 0;
+}
+
+#sidebar .block ul {
+  padding:0;
+}
+
+#sidebar .block {
+ padding: 0 2px 1.5em;
+}

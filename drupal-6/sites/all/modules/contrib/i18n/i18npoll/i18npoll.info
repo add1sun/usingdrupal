@@ -1,0 +1,16 @@
+; $Id: i18npoll.info,v 1.1.2.2 2008/02/24 19:09:59 jareyero Exp $
+name = Multilingual Poll
+description = Aggregates poll results for all translations
+dependencies[] = translation
+dependencies[] = poll
+package = Multilanguage - i18n
+core = 6.x
+
+
+
+; Information added by drupal.org packaging script on 2008-04-23
+version = "6.x-1.0-beta1"
+core = "6.x"
+project = "i18n"
+datestamp = "1208979021"
+

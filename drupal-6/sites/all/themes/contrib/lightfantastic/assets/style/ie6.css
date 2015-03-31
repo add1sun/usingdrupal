@@ -1,0 +1,43 @@
+/* $Id: ie6.css,v 1.9 2008/05/28 21:29:28 brauerranch Exp $ */
+
+div#header {
+  zoom: 1;
+}
+
+div#logowrap {
+  zoom: 1;
+  padding-bottom: 0;
+}
+
+div#content-outer-wrap {
+  zoom: 1;
+}
+
+div#content {
+  zoom: 1;
+}
+
+div#navigation_left ul li a {
+  height: 1%;
+}
+
+div#navigation_right ul li a {
+  height: 1%;
+}
+
+div#sidebar-right {
+  height: 420px;
+}
+
+div.sidebar_left ul li a {
+  zoom: 1;
+}
+
+form#user-login-form input {
+  width: 95%;
+}
+
+div#banner {
+  height: 175px;
+  overflow: visible;
+}

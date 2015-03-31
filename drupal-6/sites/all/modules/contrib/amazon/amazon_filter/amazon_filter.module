@@ -1,0 +1,64 @@
+<?php
+// $Id: amazon_filter.module,v 1.1.2.1 2008/06/05 08:08:14 eaton Exp $
+
+/**
+ * Implementation of hook_help().
+ */
+
+/**
+ * Implementation of hook_filter_tips().
+ */
+function amazon_filter_filter_tips($delta, $format, $long = FALSE) {
+  return t('Link to Amazon products with: [amazon product_id inline|full|thumbnail]. Example: [amazon 1590597559 thumbnail]');
+}
+
+/**
+ * Implementation of hook_filter().
+ */
+function amazon_filter_filter($op, $delta = 0, $format = -1, $text = '') {
+  if ($op == 'list') {
+    return array(0 => t('Amazon filter'));
+  }
+
+  switch ($delta) {
+    case 0:
+      switch ($op) {
+        case 'description':
+          return t('Lets writers use the [amazon] tag to embed Amazon product information in text.');
+        case 'prepare':
+          return $text;
+        case 'process':
+          return _amazon_filter_process_text($text);
+      }
+      break;
+  }
+}
+
+function _amazon_filter_process_text($text) {
+  $pattern = "/\[amazon +(.*?)(?: +(.*?))?\]/";
+  $matches = array();
+  if (preg_match_all($pattern, $text, $matches)) {
+    $items = array();
+    foreach(amazon_item_lookup($matches[1]) as $item) {
+      $items[$item['asin']] = $item;
+    }
+    $search = array();
+    $replace = array();
+    foreach ($matches[0] as $key => $match) {
+      $search[] = $match;
+      if (empty($items[$matches[1][$key]])) {
+        $replace[] = "<!-- The Amazon product ". $matches[1][$key] ." could not be found.-->";
+      }
+      else {
+        if (empty($matches[2][$key]) || $matches[2][$key] == 'inline') {
+          $replace[] = theme('amazon_inline_item', $items[$matches[1][$key]]);
+        }
+        else {
+          $replace[] = theme('amazon_item', $items[$matches[1][$key]], $matches[2][$key]);
+        }
+      }
+    }
+    return str_replace($search, $replace, $text);
+  }
+  return $text;
+}

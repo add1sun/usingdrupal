@@ -1,0 +1,20 @@
+2009-08-22:
+* Upgraded Calendar to 6.x-2.0-rc4 to fix the iCal feed bug.
+  Affects Chapter 9.
+
+2009-01-16:
+* Upgraded FileField module to version 6.x-3.0-alpha6 to stop fatal errors or
+  blank screens when enabling both Content and FileField modules at the same
+  time. Affects Chapter 3, 7, and 10.
+* Upgraded Workflow module to version 1.1 to solve the "warning: Missing
+  argument 1 for trigger_access_check() in /modules/trigger/trigger.module on
+  line 129" problem when viewing the Triggers page. Affects Chapter 6.
+
+2008-12-02:
+* Fixed problem with forum setup in i18n profile.
+* Renamed store profile to Chapter 10, rather than Chapter 11.
+* Stopped hard-coding the site titles in installation profiles.
+
+2008-11-27:
+* Initial version of source code.
+

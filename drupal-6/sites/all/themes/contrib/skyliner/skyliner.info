@@ -1,0 +1,34 @@
+; $Id: skyliner.info,v 1.2 2007/10/13 15:44:40 dvessel Exp $
+
+name = Skyliner
+description = Pure css theme, single column layout.
+version = VERSION
+core = 6.x
+engine = phptemplate
+
+screenshot = images/screenshot.png
+
+features[] = name
+features[] = slogan
+features[] = mission
+features[] = search
+features[] = favicon
+features[] = primary_links
+features[] = secondary_links
+
+regions[right] = Slide Blocks
+regions[footer] = Footer
+
+scripts[] = skyliner.js
+
+stylesheets[all][] = styles/reset.css
+stylesheets[all][] = styles/typography.css
+stylesheets[all][] = styles/forms.css
+stylesheets[all][] = styles/style.css
+
+; Information added by drupal.org packaging script on 2007-10-19
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "skyliner"
+datestamp = "1192752371"
+

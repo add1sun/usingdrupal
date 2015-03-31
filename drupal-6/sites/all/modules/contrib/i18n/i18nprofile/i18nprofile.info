@@ -1,0 +1,14 @@
+name = Multilingual Profile
+description = Enables multilingual profile fields.
+dependencies[] = profile
+dependencies[] = i18nstrings
+package = Multilanguage - i18n
+version = VERSION
+core = 6.x
+
+; Information added by drupal.org packaging script on 2008-04-23
+version = "6.x-1.0-beta1"
+core = "6.x"
+project = "i18n"
+datestamp = "1208979021"
+

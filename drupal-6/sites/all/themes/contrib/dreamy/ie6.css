@@ -1,0 +1,17 @@
+/* $Id: ie6.css,v 1.2.2.1 2008/03/22 04:31:45 jswaby Exp $ */
+div#sidebar div.block ul.menu li.leaf{
+  margin-top: 0;
+  position: relative;
+}
+
+div.admin {
+  width: 100%;
+}
+
+div.admin .right {
+  margin-right: 5px;
+}
+
+div.admin .left {
+  margin-left: 5px;
+}

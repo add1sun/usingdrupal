@@ -1,0 +1,12 @@
+div.fieldgroup {
+  border: 1px solid lightgrey;
+  float: right;
+  padding: 10px 2px;
+  width: 200px;
+  font-size: .9em;
+}
+
+div.field-label-inline-first {
+  float: left;
+} 
+

@@ -1,0 +1,37 @@
+<?php
+
+// Updates happen in random order, whether or not the module is enabled,
+// so include critical code here just to be sure.
+include_once('./'. drupal_get_path('module', 'content') .'/content.module');
+
+/**
+ * Implementation of hook_install().
+ */
+function asin_install() {
+  content_notify('install', 'asin');
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function asin_uninstall() {
+  content_notify('uninstall', 'asin');
+}
+
+/**
+ * Implementation of hook_enable().
+ *
+ * Notify content module when this module is enabled.
+ */
+function asin_enable() {
+  content_notify('enable', 'asin');
+}
+
+/**
+ * Implementation of hook_disable().
+ *
+ * Notify content module when this module is disabled.
+ */
+function asin_disable() {
+  content_notify('disable', 'asin');
+}

@@ -1,0 +1,14 @@
+; $Id: i18n.info,v 1.5.2.1 2008/04/16 12:30:32 jareyero Exp $
+name = Internationalization
+description = Enables multilingual content.
+dependencies[] = locale
+dependencies[] = translation
+package = Multilanguage - i18n
+version = VERSION
+core = 6.x
+; Information added by drupal.org packaging script on 2008-04-23
+version = "6.x-1.0-beta1"
+core = "6.x"
+project = "i18n"
+datestamp = "1208979021"
+

@@ -1,0 +1,17 @@
+/* $Id: uc_file.css,v 1.2.2.3 2008/08/06 13:41:25 islandusurper Exp $ */
+
+.duration  {
+  display:inline;
+}
+
+.duration .form-item {
+  display:inline;
+}
+
+tr.group {
+  border:0px;
+}
+
+.file-name {
+  font-style: italic;
+}

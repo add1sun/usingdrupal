@@ -1,0 +1,6 @@
+<?php
+// $Id: install_profile_api.install,v 1.1.2.2 2008/08/15 18:58:59 quicksketch Exp $
+
+function install_profile_api_install() {
+
+}

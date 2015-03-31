@@ -1,0 +1,14 @@
+; $Id: imagecache_ui.info,v 1.4 2008/05/30 15:46:59 dopry Exp $
+name = Imagecache UI
+description = ImageCache User Interface.
+dependencies[] = imagecache
+dependencies[] = imageapi
+package = ImageCache
+core = 6.x
+
+; Information added by drupal.org packaging script on 2008-08-08
+version = "6.x-1.0-alpha2"
+core = "6.x"
+project = "imagecache"
+datestamp = "1218219914"
+

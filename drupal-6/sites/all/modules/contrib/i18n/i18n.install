@@ -1,0 +1,148 @@
+<?php
+// $Id: i18n.install,v 1.15 2008/02/17 17:25:39 jareyero Exp $
+/**
+ * Implementation of hook_schema().
+ */
+function i18n_schema() {
+  $schema['i18n_variable'] = array(
+    'description' => t('Multilingual variables.'),
+    'fields' => array(
+      'name' => array(
+        'description' => t('The name of the variable.'),
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => ''),
+      'language' => array(
+        'description' => t('The language of the variable.'),
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => ''),
+      'value' => array(
+        'description' => t('The value of the variable.'),
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'big'),
+      ),
+    'primary key' => array('name', 'language'),
+    );
+  return $schema;
+}
+
+/**
+ * Set language field in its own table
+ * Do not drop node.language now, just in case
+ * TO-DO: Drop old tables, fields
+ */
+function i18n_install() {
+  // Create database tables
+  drupal_install_schema('i18n');
+  // Set module weight for it to run after core modules
+  db_query("UPDATE {system} SET weight = 10 WHERE name = 'i18n' AND type = 'module'");
+}
+
+/**
+ *  Drupal 4.7 updates 
+ **/ 
+function i18n_update_1() {
+  $items = array();
+  $items[] = update_sql("ALTER TABLE {i18n_node} ADD language VARCHAR(12)");
+  $items[] = update_sql("UPDATE {i18n_node} i INNER JOIN {node} n ON i.nid = n.nid SET i.language = n.language ");
+  $items[] = update_sql("INSERT INTO {i18n_node}(nid,language) SELECT n.nid, n.language FROM {node} n LEFT JOIN {i18n_node} i ON n.nid = i.nid WHERE n.language != '' AND i.nid IS NULL");
+  return $items;
+}
+
+function i18n_update_2() {
+  $items = array();
+  $items[] = update_sql("ALTER TABLE {term_data} ADD trid int(10) unsigned NOT NULL default '0'");
+  $items[] = update_sql("UPDATE {term_data} t INNER JOIN {i18n_taxonomy_term} i ON i.tid = t.tid SET t.trid = i.trid");
+  return $items;
+}
+
+function i18n_update_3(){
+  $items = array();
+  $items[] = update_sql("ALTER TABLE {i18n_node} MODIFY COLUMN trid INTEGER UNSIGNED NOT NULL default '0', DROP PRIMARY KEY, ADD PRIMARY KEY(nid)");
+  $items[] = update_sql("ALTER TABLE {term_data} MODIFY COLUMN trid INTEGER UNSIGNED NOT NULL default '0', DROP PRIMARY KEY, ADD PRIMARY KEY(tid)");
+  return $items;
+}
+
+function i18n_update_4(){
+  $items[] = update_sql("CREATE TABLE {i18n_variable} (
+        name varchar(48) NOT NULL default '',
+        language varchar(12) NOT NULL default '',
+        value longtext NOT NULL,
+        PRIMARY KEY (name, language)
+      )");
+  return $items;
+}
+
+/**
+ * Drupal 5 updates
+ */
+// Multilingual menu items
+function i18n_update_5(){
+  $items[] = update_sql("ALTER TABLE {menu} ADD language VARCHAR(12) NOT NULL default ''");
+  return $items; 
+}
+// Module weithgts
+function i18n_update_6(){
+  // Old module weights. Caused some trouble with other modules. 
+}
+// Redefinition of module weights
+function i18n_update_7(){
+  $items[] = update_sql("UPDATE {system} SET weight = -10 WHERE name = 'i18n' AND type = 'module'");
+  $items[] = update_sql("UPDATE {system} SET weight = 10 WHERE name = 'translation' AND type = 'module'");
+  return $items;
+}
+// Update tables to utf8
+function i18n_update_8(){
+  return _system_update_utf8(array('i18n_variable'));
+}
+
+/**
+ * Drupal 6 updates
+ */ 
+function i18n_update_9() {
+  // Update content type settings
+  foreach (array_keys(node_get_types()) as $type) {
+    if (variable_get('i18n_node_'.$type, 0)) {
+      variable_set('language_content_type_'.$type, TRANSLATION_ENABLED);
+    }
+  }
+  // General language settings
+  if (variable_get('i18n_browser', 0)) {
+    variable_set('language_negotiation', LANGUAGE_NEGOTIATION_PATH);
+  } else {
+    variable_set('language_negotiation', LANGUAGE_NEGOTIATION_PATH_DEFAULT);
+  }
+  // Set module weight for it to run after core modules
+  $items[] = update_sql("UPDATE {system} SET weight = 10 WHERE name = 'i18n' AND type = 'module'");  
+  // Move node language and trid into node table
+  $items[] = update_sql("UPDATE {node} n INNER JOIN {i18n_node} i ON n.nid = i.nid SET n.language = i.language, n.tnid = i.trid");
+  
+  return $items;
+}
+
+/**
+ * Drupal 6 clean up. To uncomment after making sure all previous updates work
+ */
+/*
+function i18n_update_10() {
+  // Drop old tables
+  $items[] = update_sql("DROP TABLE {i18n_node}");
+  
+  // Delete variables. Most settings will be now handled by Drupal core.
+  variable_del('i18n_allow');
+  variable_del('i18n_browser');
+  variable_del('i18n_content');
+  variable_del('i18n_keep');
+  variable_del('i18n_multi');
+  variable_del('i18n_interface');
+  variable_del('i18n_default');
+  variable_del('i18n_supported_langs');
+  variable_del('i18n_translation_links');
+  variable_del('i18n_translation_node_links');
+  return $items;
+}
+*/

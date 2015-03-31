@@ -1,0 +1,13 @@
+; $Id$
+name = Newmarine
+description = Table-based multi-column theme based on Bluemarine.
+version = VERSION
+core = 6.x
+engine = phptemplate
+
+regions[header] = Header
+regions[left] = Left sidebar
+regions[right] = Right sidebar
+regions[content_top] = Content top
+regions[content] = Content
+regions[footer] = Footer

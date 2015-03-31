@@ -1,0 +1,11 @@
+; $Id: flag_actions.info,v 1.1.2.1 2008/09/05 17:38:06 quicksketch Exp $
+name = Flag actions
+description = Execute actions on Flag events.
+core = 6.x
+dependencies[] = flag
+; Information added by drupal.org packaging script on 2008-10-19
+version = "6.x-1.0-beta5"
+core = "6.x"
+project = "flag"
+datestamp = "1224452114"
+

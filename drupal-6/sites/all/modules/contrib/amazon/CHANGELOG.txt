@@ -1,0 +1,10 @@
+$Id: CHANGELOG.txt,v 1.1.2.1 2008/05/31 04:22:58 eaton Exp $
+
+5/30/08 - BETA-2 release.
+=========================
+Properly handle prices and artist related data
+Views integration
+CCK field type rewritten to better use the CCK APIs
+Input filter (ala Amazon Filter module)
+Bug fixes for artist/creator data
+Bug fixes for timestamping and cron updates

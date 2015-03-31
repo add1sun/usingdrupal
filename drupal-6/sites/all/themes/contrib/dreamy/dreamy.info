@@ -1,0 +1,11 @@
+; $Id$
+name = dreamy
+description = A clean blog theme from the now defunct Ginger Ninja.
+core = 6.x
+engine = phptemplate
+; Information added by drupal.org packaging script on 2008-07-02
+version = "6.x-1.3"
+core = "6.x"
+project = "dreamy"
+datestamp = "1215009015"
+

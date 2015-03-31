@@ -1,0 +1,13 @@
+name = Pixture
+description = Table based recolorable multi-column liquid/fixed layout theme, designed by Pixture Studio
+version = VERSION
+core = 6.x
+engine = phptemplate
+stylesheets[all][] = style.css
+
+; Information added by drupal.org packaging script on 2008-04-25
+version = "6.x-1.1"
+core = "6.x"
+project = "pixture"
+datestamp = "1209129615"
+

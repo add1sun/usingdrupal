@@ -1,0 +1,272 @@
+/* $Id: print.css,v 1.1 2008/06/29 18:56:11 shannonlucas Exp $ */
+
+/* ------------------------------------------------------------------------
+ * Provides print styling for Nitobe.
+ * http://drupal.org/projects/nitobe
+ * --------------------------------------------------------------------- */
+
+/* @group HTML Elements */
+body {
+	background: #fff;
+	color: #000;
+	margin: 1cm;
+	font: 12pt/1.5 Palatino, "Palatino Linotype", "URW Palladio L", "Liberation Seriv", "Free Serif", serif;
+}
+
+a:link, a:visited {
+	color: #000;
+	text-decoration: underline;
+}
+
+blockquote, q {
+	border-left: 1pt solid #ccc;
+	border-right: 1pt solid #ccc;
+	color: #777;
+	margin: 1em 2em;
+	padding: 0 1em;
+	font-style: italic;
+}
+
+blockquote p+p, q p+p {
+	margin: 0;
+	padding-top: 1em;
+}
+
+blockquote cite, q cite {
+	display: block;
+	font-style: italic;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+	text-align: right;
+}
+
+del { text-decoration: line-through; }
+
+dd {
+	font-style: italic;
+	margin-left: 1em;
+}
+
+dl { padding: 0.5em 1em; }
+
+dt {
+	font-weight: bold;
+	font-style: italic;
+}
+
+ins {
+	font-style: normal;
+	text-decoration: none;
+}
+
+li { margin-left:30px; }
+
+ol {
+	display: block;
+	list-style-position: outside;
+	list-style-type: decimal;
+	margin: 0 1em 1em 1em;
+}
+
+ol li, ol li ol li, ul li, ul li ul li { display: list-item; }
+
+ol li ol {
+	list-style-type: lower-alpha;
+	margin: 0;
+}
+
+small { font-size: 90%; }
+
+ul {
+	display: block;
+	list-style-position: outside;
+	list-style-type: disc;
+	margin: 0 1em 1em 1em;
+}
+
+ul li ul {
+	list-style-type: circle;
+	margin: 0;
+}
+
+/* @end */
+
+
+/* @group Page Structure */
+#header { width: 100%; }
+
+#headerTitle, #headerTitle h1 {
+	font-size: 24pt;
+    line-height: 1em;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#headerTitle h1 a {
+	color: #000;
+	text-decoration: none;
+}
+
+#headerTitle h1 a span { margin-left: 0.33em; }
+
+#site-slogan {
+	color: #ccc;
+	font-size: 90%;
+	font-style: italic;
+	margin: 0;
+}
+
+#center { 
+float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+
+div.rule, div.rule-top {
+	border-top: 1pt solid #000;
+	height: 2pt;
+	margin-bottom: 12pt;
+}
+
+#footer {
+	font-size: 85%;
+	margin: 0;
+	padding: 0;
+	text-align: right;
+}
+
+.clear-block {
+	clear: both !important;
+}
+
+/* @end */
+
+
+/* @group Nodes */
+div.headline {
+	border-bottom: 1pt solid #ccc;
+	width: 100%;
+}
+
+div.headline h2 {
+	display: inline;
+	font-size: 21pt;
+	margin: 0;
+	padding: 0;
+	width: 60%;
+}
+
+div.headline h2 a:link,
+div.headline h2 a:visited {
+	color: #000;
+	text-decoration: none;	
+}
+
+div.headline div.timestamp {
+	color: #ccc;
+	display: inline;
+	font-size: 10pt;
+	font-style: italic;
+	font-weight: normal;
+	margin: 0 0 0 12pt;
+	padding: 0;
+	width: 39%;
+}
+
+.node-author {
+	color: #ccc;
+	display: block;
+	font-size: 10pt;
+	font-style: italic;
+	line-height: 85%;
+	margin: 0;
+	padding: 0;
+	text-align: right;
+}
+
+div.node+div.node {
+	margin-top: 18pt !important;
+}
+
+div.content a:link:after, div.content a:visited:after {
+	color: #000;
+   	content: " (" attr(href) ") ";
+   	font-size: 90%;
+   	text-decoration: underline;
+}
+
+div.node-author a:link, div.node-author a:visited {
+	text-decoration: none;
+}
+
+div.node-author a:link:after, div.node-author a:visited:after {
+	content: "" "";
+	text-decoration: none;
+}
+
+/* @end */
+
+
+/* @group General Content Styles */
+.pull-quote-left, .pull-quote-right, .pull-quote-center {
+	border: 0;
+	border-top: 2pt solid #ccc;
+	border-bottom: 2pt solid #ccc;
+	color: #aaa;
+	font-size: 150%;
+	font-style: normal;
+	font-weight: normal;
+	margin: 12pt 0;
+	padding: 12pt 0;
+	text-align: center;
+	width: 33%;
+}
+
+.pull-quote-left p, .pull-quote-right p, .pull-quote-center p {
+	margin: 0;
+	padding: 0;
+}
+
+.pull-quote-center {
+	display: block;
+	margin: 12pt 0;
+	width: 100%;
+}
+
+.pull-quote-right {
+	float: right;
+	margin-left: 12pt;
+}
+
+.pull-quote-left {
+	float: left;
+	margin-right: 12pt;
+}
+
+img.floatleft {
+	float: left;
+	margin: 0 12pt 12pt 0;
+}
+
+img.floatright {
+	float: right;
+	margin: 0 0 12pt 12pt;
+}
+
+/* @end */
+
+
+/* @group Hidden Elements */
+form, span.readmore, ul.pager, #search-top, #headerLinks, #navphoto,
+#sidebar-right, #bottom-bar, #comments, #bottomPad, #bottom-hr, div.meta,
+div.breadcrumb, #tabs-wrapper {
+	display: none !important;
+}
+
+/* @end */
+

@@ -1,0 +1,176 @@
+<?php
+// $Id: uc_file.install,v 1.2.2.6 2008/10/15 14:47:57 islandusurper Exp $
+
+function uc_file_schema() {
+  $schema = array();
+
+  $schema['uc_files'] = array(
+    'fields' => array(
+      'fid' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'filename' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('fid'),
+  );
+
+  $schema['uc_file_products'] = array(
+    'fields' => array(
+      'pfid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'fid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'model' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'description' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+      'shippable' => array(
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'pfid' => array('pfid'),
+      'fid' => array('fid'),
+    ),
+  );
+
+  $schema['uc_file_users'] = array(
+    'fields' => array(
+      'fid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'pfid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+      ),
+      'key' => array(
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'granted' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'accessed' => array(
+        'type' => 'int',
+        'size' => 'small',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'addresses' => array(
+        'type' => 'text',
+      ),
+    ),
+    'indexes' => array(
+      'fid' => array('fid'),
+      'uid' => array('uid'),
+    ),
+  );
+
+  return $schema;
+}
+
+function uc_file_install() {
+  drupal_install_schema('uc_file');
+}
+
+function uc_file_uninstall() {
+  drupal_uninstall_schema('uc_file');
+  db_query("DELETE FROM {uc_product_features} WHERE fid = 'file'");
+  db_query("DELETE FROM {variable} WHERE name LIKE 'uc_file_%%'");
+}
+
+function uc_file_update_1() {
+  $ret = array();
+
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      $ret[] = update_sql("ALTER TABLE {uc_file_products} ADD `description` VARCHAR( 255 ) NULL AFTER `model`");
+      $ret[] = update_sql("ALTER TABLE {uc_file_users} CHANGE model `pfid` mediumint(9) NULL DEFAULT NULL");
+      break;
+    case 'pgsql':
+      break;
+  }
+
+  return $ret;
+}
+
+function uc_file_update_2() {
+  $ret = array();
+  switch ($GLOBALS['db_type']) {
+    case 'pgsql':
+      db_change_column($ret, 'uc_file_users', 'accessed', 'accessed', 'smallint_unsigned', array('not null' => TRUE, 'default' => 0));
+    break;
+  }
+  return $ret;
+}
+
+function uc_file_update_3() {
+  $ret = array();
+
+  // Fixes the db_next_id() + 1 error.
+  $pfid = db_result(db_query("SELECT MAX(pfid) FROM {uc_product_features}"));
+  $ret[] = update_sql("UPDATE {sequences} SET id = ". intval($pfid) ." WHERE name = '{uc_product_features}_pfid'");
+
+  return $ret;
+}
+
+function uc_file_update_6000() {
+  $ret = array();
+
+  db_drop_index($ret, 'uc_files', 'fid');
+  db_change_field($ret, 'uc_files', 'fid', 'fid', array('type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE), array('primary key' => array('fid')));
+
+  db_drop_index($ret, 'uc_file_products', 'pfid');
+  db_drop_index($ret, 'uc_file_products', 'fid');
+  db_change_field($ret, 'uc_file_products', 'pfid', 'pfid', array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0), array('indexes' => array('pfid' => array('pfid'))));
+  db_change_field($ret, 'uc_file_products', 'fid', 'fid', array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0), array('indexes' => array('fid' => array('fid'))));
+  db_change_field($ret, 'uc_file_products', 'shippable', 'shippable', array('type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 0));
+
+  db_drop_index($ret, 'uc_file_users', 'fid');
+  db_drop_index($ret, 'uc_file_users', 'uid');
+  db_change_field($ret, 'uc_file_users', 'fid', 'fid', array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0), array('indexes' => array('fid' => array('fid'))));
+  db_change_field($ret, 'uc_file_users', 'uid', 'uid', array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0), array('indexes' => array('uid' => array('uid'))));
+  db_change_field($ret, 'uc_file_users', 'pfid', 'pfid', array('type' => 'int', 'unsigned' => TRUE, 'not null' => FALSE));
+
+  return $ret;
+}

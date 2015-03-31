@@ -1,0 +1,39 @@
+; $Id: nitobe.info,v 1.4 2008/08/04 23:55:24 shannonlucas Exp $
+name = Nitobe
+description = Fixed width (960 pixels) theme with a right side bar region and a bottom region. Designed as a single-user blog theme.
+screenshot = screenshot.png
+core = 6.x
+engine = phptemplate
+
+regions[admin_header] = Admin Header
+regions[header] = Header
+regions[content] = Content
+regions[left] = Upper Sidebar
+regions[right] = Lower Sidebar
+regions[bottom] = Bottom Block Bar
+regions[footer] = Footer
+
+features[] = name
+features[] = slogan
+features[] = search
+features[] = favicon
+features[] = primary_links
+features[] = secondary_links
+;features[] = mission
+;features[] = node_user_picture
+;features[] = comment_user_picture
+;features[] = logo
+
+stylesheets[all][] = reset.css
+stylesheets[all][] = text.css
+stylesheets[screen][] = layout.css
+stylesheets[screen][] = style.css
+stylesheets[screen][] = core.css
+stylesheets[print][] = print.css
+
+; Information added by drupal.org packaging script on 2008-08-05
+version = "6.x-1.6"
+core = "6.x"
+project = "nitobe"
+datestamp = "1217950243"
+

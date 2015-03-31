@@ -1,0 +1,16 @@
+; $Id: uc_googleanalytics.info,v 1.4.4.2 2008/10/15 14:48:01 islandusurper Exp $
+name = Google Analytics for Ubercart
+description = Adds e-commerce tracking for UberCart to the Google Analytics module.
+dependencies[] = uc_cart
+dependencies[] = uc_order
+dependencies[] = uc_store
+package = Ubercart - extra
+core = 6.x
+php = 5.0
+
+; Information added by drupal.org packaging script on 2008-11-04
+version = "6.x-2.x-dev"
+core = "6.x"
+project = "ubercart"
+datestamp = "1225757759"
+
